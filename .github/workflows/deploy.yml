@@ -23,3 +23,17 @@ jobs:
 
       - name: Build Project
         run: npm run build
+
+      - name: Deploy to IIS
+        shell: powershell
+        run: |
+          $source = "C:\actions-runner\_work\CICDTraining\CICDTraining\dist\CICDTraining"
+          $destination = "D:\Workspace\Ragul\WebApps\CICDTraining"
+
+          Write-Host "Cleaning destination..."
+          Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+          Write-Host "Copying new files..."
+          Copy-Item $source -Destination $destination -Recurse -Force
+
+          Write-Host "Deployment completed successfully."
