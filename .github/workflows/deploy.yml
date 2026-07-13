@@ -34,6 +34,6 @@ jobs:
           Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
 
           Write-Host "Copying new files..."
-          Copy-Item $source -Destination $destination -Recurse -Force
+          Copy-Item "$source\*" -Destination $destination -Recurse -Force
 
           Write-Host "Deployment completed successfully."
