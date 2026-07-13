@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run move-browser-files",
+    "move-browser-files": "powershell -Command \"$src = 'dist/CICDTraining/browser/*'; $dst = 'dist/CICDTraining'; Get-ChildItem $src | Move-Item -Destination $dst; Remove-Item -Path 'dist/CICDTraining/browser' -Recurse -Force; Remove-Item -Path 'dist/CICDTraining/prerendered-routes.json' -Force -ErrorAction SilentlyContinue\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:CICDTraining": "node dist/CICDTraining/server/server.mjs"
+    "lint": "ng lint --if-present",
+    "prettier:check": "prettier --check \"src/**/*.{ts,html,css}\""
   },
   "prettier": {
     "printWidth": 100,

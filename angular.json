@@ -16,8 +16,10 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/CICDTraining",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "prerender": false,
             "assets": [
               {
                 "glob": "**/*",
@@ -26,12 +28,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
